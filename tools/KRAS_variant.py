@@ -83,17 +83,20 @@ class KRAS_Variant:
             self.k_a_GTP = (2.2e6)
             
         # drug related kinetic parameters. #TODO wasteful to have all of them here, should simply import from csv with row = [attr_name_string, value, source_string]
-        self.k_on_SOSi = (1.1e7)/self.volscale
-        self.k_off_SOSi = self.k_on_SOSi*(470e-9) # from BI-3407 Hofman Paper, K_D = 470 nmol/L
-        self.k_on_tricomplex = (1e7)/self.volscale
-        self.K_D_2 = (115e-9)
-        self.k_on_panKRASi = 1.6e7 # from https://doi.org/10.1038/s41586-023-06123-3
-        self.k_off_panKRASi = 0.042 # from https://doi.org/10.1038/s41586-023-06123-3
-        self.k_on_panBRAFi = 1e7/self.volscale
-        self.k_off_panBRAFi = self.k_on_panBRAFi*(6.13e-9) #K_D from https://www.sciencedirect.com/science/article/pii/S0021925823002764?via%3Dihub
-        self.Kd_KRAS_OFF = 3.7e-6 #from https://pubs.acs.org/doi/10.1021/acs.jmedchem.9b02052
-        self.Kd_KRAS_OFF_ON_D = 4e-6
-        self.Kd_KRAS_OFF_ON_T = 4e-6
+        # self.k_on_SOSi = (1.1e7)/self.volscale
+        # self.k_off_SOSi = self.k_on_SOSi*(470e-9) # from BI-3407 Hofman Paper, K_D = 470 nmol/L
+        # self.k_on_tricomplex = (1e7)/self.volscale
+        
+        self.K_D_1 = (700e-9) # [M]
+        self.K_D_2 = (115e-9) # [M]
+        
+        # self.k_on_panKRASi = 1.6e7 # from https://doi.org/10.1038/s41586-023-06123-3
+        # self.k_off_panKRASi = 0.042 # from https://doi.org/10.1038/s41586-023-06123-3
+        # self.k_on_panBRAFi = 1e7/self.volscale
+        # self.k_off_panBRAFi = self.k_on_panBRAFi*(6.13e-9) #K_D from https://www.sciencedirect.com/science/article/pii/S0021925823002764?via%3Dihub
+        # self.Kd_KRAS_OFF = 3.7e-6 #from https://pubs.acs.org/doi/10.1021/acs.jmedchem.9b02052
+        # self.Kd_KRAS_OFF_ON_D = 4e-6
+        # self.Kd_KRAS_OFF_ON_T = 4e-6
 
     # Dependent kinetic parameters.
     @property
@@ -191,7 +194,7 @@ all_mutants = [WT_Mut,A146T,A146V,A59T,F28L,G12A,G12C,G12D,G12E,G12P,G12R,G12S,G
 # Adjust any drug related parameters to mutation type. #TODO could add columns for these into master data excel file.
 
 # K_D_2s (for KRAS) based on https://www.nature.com/articles/s41586-024-07205-6 extended table 2
-G12V.K_D_2 = 84.8e-9
+G12V.K_D_2 = 84.8e-9 # M
 G12C.K_D_2 = 40.3e-9
 G12D.K_D_2 = 317e-9
 G12R.K_D_2 = 271e-9
